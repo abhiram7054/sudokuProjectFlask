@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div>
+    <img class="profilePic" src="../static/assets/numberLogo-2.png" alt="">
+</div>
+
+<div class="home-desc">
+    <h1 class="loginHeading">Log In</h1>
+
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="notification">
+                {{ messages[0] }}
+            </div>
+        {% endif %}
+        {% endwith %}
+        <form method="POST" action="/login">
+            <div class="inputNames">
+                <div class="name">
+                    Email
+                </div>
+                <div class="input">
+                    <input class="input is-large" type="email" name="email" placeholder="Your Email" autofocus="">
+                </div>
+            </div>
+            <div class="inputNames">
+                <div class="name">
+                    Password
+                </div>
+                <div class="input">
+                    <input class="input is-large" type="password" name="password" placeholder="Your Password">
+                </div>
+            </div>
+            <div>
+                <label class="checkbox">
+                    <input type="checkbox" name="remember">
+                    Remember me
+                </label>
+            </div>
+            <div>
+                <button class="button">Login</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

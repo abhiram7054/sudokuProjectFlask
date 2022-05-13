@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- <section class="home" id="home"> -->
+
+  <div>
+      <img class="profilePic" src="../static/assets/numberLogo-2.png" alt="">
+  </div>
+
+  <div class="home-desc">
+      <h1>About the Game</h1>
+      <p class="line2">Sudoku, a popular Japanese puzzle game, is based on logical number placement. Sudoku is an online logic game that does not involve any computation or specific arithmetic abilities; all that is required are brains and focus. More inside.</p>
+
+      <div class="buttons">
+          <!-- <div class="work-exp"> -->
+            <a href="{{ url_for('auth.login') }}" class="work-exp">LogIn</a>
+          <!-- </div> -->
+          <!-- <div class="work-exp"> -->
+            <a href="{{ url_for('auth.signup') }}" class="work-exp">SignUp</a>
+          <!-- </div> -->
+      </div>
+  </div>
+<!-- </section> -->
+{% endblock %}

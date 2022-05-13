@@ -1,0 +1,270 @@
+/* we have imported the required fonts from the google api  */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    color: inherit;
+    transition: 0.2s;
+}
+
+body {
+    background: var(--charcoal);
+    color: var(--text);
+}
+
+/* we have declared the names of the colors that we are going to use.  */
+
+
+:root {
+    --charcoal: #101820FF;
+    --yellow : #FEE715FF;
+    --text : #fff;
+    --black : black;
+}
+
+/* this is when we chnage the mode from dark to light or vice versa  */
+
+.theme {
+    --charcoal: #edbcab;
+    --yellow: #c23b0a;
+    --black: rgb(97, 1, 14);
+}
+
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    transition: 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background: var(--charcoal);
+
+}
+
+.cod {
+    width: 250px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.topbar {
+    display: flex;
+}
+
+.topbar a {
+    color: var(--text);
+    font-size: medium;
+    padding: 15px;
+}
+
+.topbar img {
+    width: 20px;
+}
+
+.topbar a:hover{
+    background: var(--yellow);
+    transition: 0.2s;
+    border-radius: 25px;
+}
+
+.menuIcon{
+    display: none;
+    cursor: pointer;
+    z-index: 10001;
+}
+
+section {
+    padding: 120px 10%;
+}
+
+.home {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 20px;
+    align-items: center;
+}
+
+.profilePic {
+    height: auto;
+    width: 400px;
+    max-width: 100%;
+}
+
+
+.home-desc h1{
+    color: var(--text);
+    font-weight: bolder;
+    font-size: 50px;
+}
+
+.loginHeading {
+    text-align: center;
+}
+
+.home-desc .line1 {
+    color: var(--yellow);
+    margin-top: 20px;
+}
+
+.home-desc .line2 {
+    margin-top: 20px;
+}
+
+.work-exp {
+    margin-top: 70px;
+    text-align: center;
+    background: var(--black);
+    text-decoration: none;
+    color: var(--yellow);
+    border-radius: 20px;
+    padding: 15px 20px;
+    /* border: solid; */
+    font-weight: bold;
+    cursor: pointer;
+    max-width: 200px;
+    width: 100%;
+    margin-right: 20px;
+    transition: 0.2s;
+    font-size: large;
+
+}
+
+
+.buttons {
+    display: flex;
+    /* justify-content: center; */
+    align-items: stretch;
+}
+
+
+.work-exp:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 0px 10px 0px var(--yellow);
+}
+
+.container {
+    margin-top: 30px;
+    text-align: center;
+    background: var(--black);
+    text-decoration: none;
+    color: var(--yellow);
+    border-radius: 20px;
+    padding: 15px 20px;
+    /* border: solid; */
+    font-weight: bold;
+    cursor: pointer;
+    /* max-width: 200px; */
+    width: 100%;
+    margin-right: 20px;
+    transition: 0.2s;
+    font-size: large;
+    box-shadow: 0px 0px 10px 0px var(--yellow);
+    display: flex;
+    flex-direction: column;
+
+}
+
+.inputNames {
+    display: flex;
+    flex-direction: row;
+    margin: 30px;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 80px ;
+}
+
+.name {
+    margin-right: 20px;
+}
+
+.input {
+    background: none;
+    border-color: var(--yellow);
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.button {
+    margin-top: 20px;
+    text-align: center;
+    background: var(--yellow);
+    text-decoration: none;
+    color: var(--charcoal);
+    border-radius: 20px;
+    padding: 10px 20px;
+    border: solid;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    max-width: 150px;
+    margin-bottom: 20px;
+}
+
+.button:hover {
+    background: var(--charcoal);
+    border-color: var(--yellow);
+    border: solid;
+    color: var(--yellow);
+}
+
+.notification {
+    margin-top: 20px;
+    color: red;
+
+}
+
+@media (max-width: 1100px) {
+
+    .home-desc h1{
+        color: var(--text);
+        font-weight: bolder;
+        font-size: 50px;
+    }
+
+    .cod {
+        width: 160px;
+        cursor: pointer;
+        margin-right: 20px;
+    }
+
+    .menuIcon {
+        display: block;
+    }
+
+    .topbar {
+        display: flex;
+        position: absolute;
+        flex-direction: column;
+        top: -1000%;
+        right: 0;
+        left: 1%;
+        text-align: left;
+        background: var(--charcoal);
+    }
+
+    .topbar a {
+        padding: 10px;
+        display: block;
+        border-left: solid;
+        margin-bottom: 5px;
+    }
+
+    .topbar.active{
+        top: 100%;
+    }
+
+}
