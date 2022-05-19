@@ -9,78 +9,53 @@
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" /> -->
     <script src="https://kit.fontawesome.com/d5201e01cb.js" crossorigin="anonymous"></script>
     <!-- <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/base.css') }}"> -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../static/styles/base.css">
-    <!-- <link rel="stylesheet" href="../static/styles/play.css"> -->
     <script src="../static/javascript/base.js" defer></script>
+    <script src="../static/javascript/play.js" defer></script>
+
 </head>
 
 <body>
 
     <header>
-        <a href="{{ url_for('main.index') }}"><img src="../static/assets/textLogo.png" alt="" class="cod"></a>
+        <a><img src="../static/assets/textLogo.png" alt="" class="cod"></a>
         <div class="menuIcon"><i class="fa-solid fa-bars fa-2xl"></i></div>
 
         <ul class="topbar">
             {% if not current_user.is_authenticated %}
-            <li><a href="{{ url_for('main.index') }}">
+            <li><a href="{{ url_for('main.index') }}" class="work-exp" >
                 Home
             </a></li>
             {% endif %}
             {% if current_user.is_authenticated %}
-            <li><a href="{{ url_for('main.dashboard') }}">
+            <li><a href="{{ url_for('main.dashboard') }}" class="work-exp">
                 Dashboard
             </a></li>
             {% endif %}
-            <li><a href="{{ url_for('main.rules') }}">
+            <li><a href="{{ url_for('main.rules') }}" class="work-exp">
                 Rules
             </a></li>
             {% if current_user.is_authenticated %}
-            <li><a href="{{ url_for('main.profile') }}">
+            <li><a href="{{ url_for('main.profile') }}" class="work-exp">
                 Profile
             </a></li>
-            <li><a href="{{ url_for('auth.logout') }}">
+            <li><a href="{{ url_for('auth.logout') }}" class="work-exp">
                 Logout
             </a></li>
             {% endif %}
-            <li><a><img src="../static/assets/sun.png" alt="" id="mode"></a></li>
+            <!-- <li><a><img src="../static/assets/sun.png" alt="" id="mode"></a></li> -->
+            <li>
+                <a class="dark-mode-toggle work-exp" id="dark-mode-toggle">
+                    <i class="bx bxs-moon"></i>
+                    <i class="bx bxs-sun"></i>
+                    
+                </a>
+            </li>
         </ul>
     </header>
 
-
     <section class="home" id="home">
-
-        <!-- <div class="hero-head">
-            <nav class="navbar">
-                <div class="container">
-                    <div id="navbarMenuHeroA" class="navbar-menu">
-                        <div class="navbar-end">
-                            <a href="{{ url_for('main.index') }}" class="navbar-item">
-                                Home
-                            </a>
-                            {% if current_user.is_authenticated %}
-                            <a href="{{ url_for('main.profile') }}" class="navbar-item">
-                                Profile
-                            </a>
-                            {% endif %}
-                            {% if not current_user.is_authenticated %}
-                            <a href="{{ url_for('auth.login') }}" class="navbar-item">
-                                Login
-                            </a>
-                            <a href="{{ url_for('auth.signup') }}" class="navbar-item">
-                                Sign Up
-                            </a>
-                            {% endif %}
-                            {% if current_user.is_authenticated %}
-                            <a href="{{ url_for('auth.logout') }}" class="navbar-item">
-                                Logout
-                            </a>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </div> -->
-
         <!-- <div class="hero-body">
             <div class="container has-text-centered"> -->
                {% block content %}

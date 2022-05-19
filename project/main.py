@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, request, url_for, session
+from flask import Blueprint, render_template, redirect, request, url_for
 from flask_login import login_required, current_user
 from .models import User, Game
 from . import db
@@ -20,9 +20,15 @@ def profile():
 @login_required
 def dashboard():
 
-    topScore = Game.query.with_entities(Game.score).filter_by(email=current_user.email).order_by(Game.score.asc()).limit(2)[1][0]
-    print(topScore)
-    return render_template('dashboard.html', name=current_user.name, topScore=topScore)
+    print("total number of rows are : ", db.session.query(Game).filter_by(email=current_user.email).count())
+
+    if db.session.query(Game).filter_by(email=current_user.email).count() > 1 :
+        bestScore = Game.query.with_entities(Game.score).filter_by(email=current_user.email).order_by(Game.score.asc()).limit(2)[1][0]
+        print(bestScore)
+    else:
+        bestScore = Game.query.with_entities(Game.score).filter_by(email=current_user.email).order_by(Game.score.asc()).first()[0]
+        print(bestScore)
+    return render_template('dashboard.html', name=current_user.name, bestScore=bestScore)
 
 @main.route('/play')
 @login_required

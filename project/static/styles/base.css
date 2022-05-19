@@ -30,12 +30,20 @@ body {
 
 /* this is when we chnage the mode from dark to light or vice versa  */
 
-.theme {
+.dark {
     --charcoal: #edbcab;
     --yellow: #c23b0a;
     --black: rgb(97, 1, 14);
 }
 
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+ul {
+    list-style-type: none;
+}
 
 header {
     position: fixed;
@@ -53,9 +61,10 @@ header {
 }
 
 .cod {
-    width: 250px;
+    width: 230px;
     cursor: pointer;
     margin-right: 20px;
+    margin-left: 20px;
 }
 
 .topbar {
@@ -82,6 +91,28 @@ header {
     display: none;
     cursor: pointer;
     z-index: 10001;
+}
+
+.dark-mode-toggle {
+    color: var(--blue);
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.bxs-sun {
+    display: none;
+}
+
+.bxs-moon {
+    display: inline-block;
+}
+
+.dark .bxs-sun {
+    display: inline-block;
+}
+
+.dark .bxs-moon {
+    display: none;
 }
 
 section {
@@ -154,6 +185,10 @@ section {
 .work-exp:hover {
     transform: translateY(-10px);
     box-shadow: 0px 0px 10px 0px var(--yellow);
+}
+
+.topbar .work-exp:hover {
+    color: black;
 }
 
 .container {
