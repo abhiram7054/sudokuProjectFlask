@@ -187,10 +187,9 @@ section {
     box-shadow: 0px 0px 10px 0px var(--yellow);
 }
 
-.topbar .work-exp:hover {
-    color: black;
+.topbar .work-exp:hover{
+    color: var(--black);
 }
-
 .container {
     margin-top: 30px;
     text-align: center;
@@ -262,6 +261,84 @@ section {
 
 }
 
+.pageHeading{
+    font-size: 48px;
+    text-align: center;
+    color: var(--yellow);
+    background: var(--black);
+    border-radius: 10px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0px 0px 10px 0px var(--yellow);
+    margin-bottom: 30px;
+}
+
+.ruleHeading {
+    margin: 50px auto;
+    font-size: 24px;
+    width: 100%;
+    padding: 10px;
+    color: var(--text);
+    box-shadow: 0px 0px 10px 0px var(--text);
+    width: 60%;
+}
+
+.username {
+    text-transform: uppercase;
+    width: auto;
+    padding: 10px 30px;
+    font-size: 32px;
+    margin: 20px 30px;
+}
+
+.text {
+    margin: 10px 0px;
+    text-align: center;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.rule {
+    margin-top: 30px;
+    text-align: left;
+    background: var(--black);
+    text-decoration: none;
+    color: var(--yellow);
+    border-radius: 20px;
+    padding: 15px 20px;
+    font-weight: bold;
+    /* cursor: pointer; */
+    /* max-width: 200px; */
+    width: 100%;
+    /* margin-right: 20px; */
+    transition: 0.2s;
+    font-size: 17px;
+    box-shadow: 0px 0px 10px 0px var(--text);
+}
+
+.rule h2 {
+    margin-bottom: 20px;
+}
+
+.rule p {
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+
+.welcome{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcomeText{
+    color: var(--yellow);
+}
 @media (max-width: 1100px) {
 
     .home-desc h1{

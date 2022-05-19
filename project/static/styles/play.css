@@ -79,7 +79,7 @@ nav {
     top: 0;
     width: 100%;
     /* box-shadow: 5px 2px var(--blue); */
-    z-index: 99; */
+    /* z-index: 99; */
 }
 
 header {
@@ -378,8 +378,8 @@ header {
     width: 30px;
     border-radius: var(--border-radius);
     background-color: var(--blue);
-    color: var(--white);
-    font-size: var(--font-size);
+    color: var(--black);
+    font-size: 22px;
     display: grid;
     place-items: center;
     cursor: pointer;

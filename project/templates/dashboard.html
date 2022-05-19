@@ -2,10 +2,14 @@
 
 {% block content %}
 <!-- <div class="container"> -->
-  <h1>
-    Dashboard, {{ name }}!
-  </h1>
-
+  <section>
+  <div class="welcome">
+    <h1 class="welcomeText">WELCOME</h1>
+    <h1 class="pageHeading ruleHeading username">
+      {{ name }}
+    </h1>
+  </div>
+    
   <h1>
       Top score : {{ bestScore//60 }} mins {{ bestScore%60 }} seconds
   </h1>
@@ -16,6 +20,7 @@
       <a href="{{ url_for('main.play') }}" class="work-exp" onclick="playOption()" >Play Now</a>
     <!-- </div> -->
 </div>
+</section>
 
 
 <!-- </div> -->

@@ -20,9 +20,13 @@ def profile():
 @login_required
 def dashboard():
 
-    print("total number of rows are : ", db.session.query(Game).filter_by(email=current_user.email).count())
+    print("total number of rows are : ", Game.query.filter_by(email=current_user.email).count())
 
-    if db.session.query(Game).filter_by(email=current_user.email).count() > 1 :
+    games = Game.query.filter((Game.email==current_user.email) & (Game.mode == 0)).all()
+    print(games)
+
+    # if db.session.query(Game).filter_by(email=current_user.email).count() > 1 :
+    if Game.query.filter_by(email=current_user.email).count() > 1 :
         bestScore = Game.query.with_entities(Game.score).filter_by(email=current_user.email).order_by(Game.score.asc()).limit(2)[1][0]
         print(bestScore)
     else:

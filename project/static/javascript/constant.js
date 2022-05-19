@@ -7,9 +7,9 @@ const CONSTANT = {
         'Easy',
         'Medium',
         'Hard',
-        'Very hard',
-        'Insane',
-        'Inhuman'
+        // 'Very hard',
+        // 'Insane',
+        // 'Inhuman'
     ],
-    LEVEL: [29, 38, 47, 56, 65, 74]
+    LEVEL: [29, 38, 47]
 }
