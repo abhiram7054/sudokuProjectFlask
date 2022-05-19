@@ -28,3 +28,11 @@ mode.onclick = function () {
         mode.src = "../static/assets/sun.png"
     }
 };
+
+// function playOption() {
+//     document.getElementById("playNow").innerHTML = `
+//     <a class="work-exp" >Easy</a>
+//     <a class="work-exp" >Medium</a>
+//     <a class="work-exp" >Hard</a>
+//     `;
+// }

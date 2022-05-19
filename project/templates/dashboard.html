@@ -7,7 +7,16 @@
   </h1>
 
   <h1>
-      Top score : {{ current_user.score }}
+      Top score : {{ topScore//60 }} mins {{ topScore%60 }} seconds
   </h1>
+
+  <div class="buttons" id="playNow">
+    <!-- <div class="work-exp"> -->
+      <!-- <div class="work-exp" onclick="playOption()" >Play Now</div> -->
+      <a href="{{ url_for('main.play') }}" class="work-exp" onclick="playOption()" >Play Now</a>
+    <!-- </div> -->
+</div>
+
+
 <!-- </div> -->
 {% endblock %}

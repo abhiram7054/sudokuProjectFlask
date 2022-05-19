@@ -1,6 +1,9 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, redirect, request, url_for, session
 from flask_login import login_required, current_user
+from .models import User, Game
 from . import db
+import json
+
 
 main = Blueprint('main', __name__)
 
@@ -16,7 +19,35 @@ def profile():
 @main.route('/dashboard')
 @login_required
 def dashboard():
-    return render_template('dashboard.html', name=current_user.name)
+
+    topScore = Game.query.with_entities(Game.score).filter_by(email=current_user.email).order_by(Game.score.asc()).limit(2)[1][0]
+    print(topScore)
+    return render_template('dashboard.html', name=current_user.name, topScore=topScore)
+
+@main.route('/play')
+@login_required
+def play():
+    return render_template('play.html', name=current_user.name)
+
+#======================================================
+@main.route('/gameResults', methods=['GET', 'POST'])
+def gameResults():
+    if request.method == 'POST':
+        print("the final score is : ",request.form.get('finalScore'))
+        a = request.form.get('finalScore')
+        a = json.loads(a)
+        # print("a is :", type(a))
+        # print(a["level"])
+        new_game = Game(email=current_user.email, mode= a["level"], score= a["seconds"])
+        db.session.add(new_game)
+        db.session.commit()
+
+    return "OK"
+
+@main.route('/upload', methods=['POST'])
+def upload():
+    # code to validate and add user to database goes here
+    return redirect(url_for('main.dashboard'))
 
 @main.route('/rules')
 def rules():
