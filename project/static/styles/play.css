@@ -153,19 +153,19 @@ header {
     cursor: pointer;
 }
 
-.bxs-sun {
+.bxs-moon {
     display: none;
 }
 
-.bxs-moon {
-    display: inline-block;
-}
-
-.dark .bxs-sun {
+.bxs-sun {
     display: inline-block;
 }
 
 .dark .bxs-moon {
+    display: inline-block;
+}
+
+.dark .bxs-sun {
     display: none;
 }
 
@@ -217,18 +217,7 @@ header {
 }
 
 .btn {
-    /* height: 60px;
-    width: 280px;
-    background-color: var(--bg-main);
-    color: var(--color-txt);
-    border-radius: 10px;
-    display: grid;
-    place-items: center;
-    overflow: hidden;
-    font-size: 24px;
-    cursor: pointer; */
-
-    /* margin-top: 70px; */
+   
     text-align: center;
     background: var(--black);
     text-decoration: none;
@@ -243,7 +232,6 @@ header {
     margin-right: 20px;
     transition: 0.2s;
     font-size: large;
-    /* transition: width 0.3s ease-in-out; */
 
 }
 
@@ -366,7 +354,7 @@ header {
 .main-game-info-time {
     position: relative;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     padding-left: 2rem;
     margin-bottom: auto;
 }

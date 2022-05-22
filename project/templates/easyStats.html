@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="stats">
+    <div class="scoreContainer">
+        <a href="">
+            <div class="focusBox">
+            <h1 class="modeName"><span>Display stats for</span> EASY</h1>
+            </div>
+        </a>
+        <a href="{{ url_for('main.mediumStats') }}">
+            <div class="scoreBox otherBox">
+            <h1 class="modeName"><span>Display stats for</span> MEDIUM</h1>
+            </div>
+        </a>
+        <a href="{{ url_for('main.hardStats') }}">
+            <div class="scoreBox otherBox">
+            <h1 class="modeName"><span>Display stats for</span> HARD</h1>
+            </div>
+        </a>
+      </div>
+    <div class="table" id="table">
+        <table>
+            <tr class="tableHeading">
+                <td class="rank">Rank</td>
+                <td>Name</td>
+                <td>Score</td>
+            </tr>
+            {% for player in easyTable %}
+                <tr>
+                <td class="rank">
+                    {{player.rank}}
+                </td>
+                <td>
+                    {{player.Game.name}}
+                </td>
+                <td>
+                    {% if player.Game.score>=3600 %}
+                        <div>{{(player.Game.score//60)//60}}H : {{(player.Game.score%3600)//60}}M : {{((player.Game.score%3600)%60)%60}}S</div>
+                    {% else %}
+                        <div>{{player.Game.score//60}}M : {{player.Game.score%60}}S</div>
+                    {% endif %}
+                </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div> 
+
+
+</section>
+
+
+<!-- </div> -->
+{% endblock %}

@@ -1,7 +1,7 @@
 
-const darkmode = JSON.parse(localStorage.getItem('darkmode'));
-document.body.classList.add(darkmode ? 'dark' : 'light');
-document.querySelector('meta[name="theme-color"').setAttribute('content', darkmode ? '#1a1a2e' : '#fff');
+// const darkmode = JSON.parse(localStorage.getItem('darkmode'));
+// document.body.classList.add(darkmode ? 'dark' : 'light');
+// document.querySelector('meta[name="theme-color"').setAttribute('content', darkmode ? '#1a1a2e' : '#fff');
 
 
 const menuIcon = document.getElementsByClassName("menuIcon")[0]
@@ -17,6 +17,10 @@ menuIcon.addEventListener("click", () => {
 window.onscroll = function () {
     topbar.classList.remove("active");
 };
+
+const darkmode = JSON.parse(localStorage.getItem('darkmode'));
+document.body.classList.add(darkmode ? 'dark' : 'light');
+document.querySelector('meta[name="theme-color"').setAttribute('content', darkmode ? '#1a1a2e' : '#fff');
 
 // Here, we are changing the theme of the page from dark to light mode or viceversa.
 

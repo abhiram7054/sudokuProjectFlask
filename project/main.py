@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from .models import User, Game
 from . import db
 import json
+from sqlalchemy import func
 
 
 main = Blueprint('main', __name__)
@@ -80,15 +81,67 @@ def dashboard():
     return render_template('dashboard.html', name=current_user.name, bestScoreEasy=bestScore_easy, bestScoreMedium=bestScore_medium, bestScoreHard=bestScore_hard, gamesPlayedEasy=gamesPlayed_easy, gamesPlayedMedium=gamesPlayed_medium, gamesPlayedHard=gamesPlayed_hard, totalGamesPlayed=totalGamesPlayed)
 
 
-@main.route('/stats',  methods=["GET", "POST"])
+@main.route('/easyStats',  methods=["GET", "POST"])
 @login_required
-def stats():
+def easyStats():
+    # easyTable = Game.query.filter(Game.mode == 0).order_by(Game.score.asc()).all()
 
-    easyTable = Game.query.filter(Game.mode == 0).order_by(Game.score.asc()).all()
-    mediumTable = Game.query.filter(Game.mode == 1).order_by(Game.score.asc()).all()
-    hardTable = Game.query.filter(Game.mode == 2).order_by(Game.score.asc()).all()
+    easyQuery = db.session.query(
+    Game, 
+    func.rank()\
+        .over(
+            order_by=Game.score.asc()
+        )\
+        .label('rank')
+    )
+
+    easyTable = easyQuery.filter_by(mode=0).all()
+    
+    print(easyTable)
+
+
     if request.method == "GET":
-         return render_template("stats.html", easyTable = easyTable, mediumTable=mediumTable, hardTable=hardTable)
+         return render_template("easyStats.html", easyTable = easyTable)
+
+@main.route('/mediumStats',  methods=["GET", "POST"])
+@login_required
+def mediumStats():
+
+    # mediumTable = Game.query.filter(Game.mode == 1).order_by(Game.score.asc()).all()
+
+    mediumQuery = db.session.query(
+    Game, 
+    func.rank()\
+        .over(
+            order_by=Game.score.asc()
+        )\
+        .label('rank')
+    )
+
+    mediumTable = mediumQuery.filter_by(mode=1).all()
+
+    if request.method == "GET":
+         return render_template("mediumStats.html", mediumTable = mediumTable)
+
+@main.route('/hardStats',  methods=["GET", "POST"])
+@login_required
+def hardStats():
+
+    hardTable = Game.query.filter(Game.mode == 2).order_by(Game.score.asc()).all()
+
+    hardQuery = db.session.query(
+    Game, 
+    func.rank()\
+        .over(
+            order_by=Game.score.asc()
+        )\
+        .label('rank')
+    )
+
+    hardTable = hardQuery.filter_by(mode=2).all()
+
+    if request.method == "GET":
+         return render_template("hardStats.html", hardTable = hardTable)
 
 @main.route('/play')
 @login_required
@@ -104,8 +157,8 @@ def gameResults():
         a = json.loads(a)
         # print("a is :", type(a))
         # print(a["level"])
-        # new_game = Game(email=current_user.email, name=current_user.name, mode= a["level"], score= a["seconds"])
-        new_game = Game(email=current_user.email, mode= a["level"], score= a["seconds"])
+        new_game = Game(email=current_user.email, name=current_user.name, mode= a["level"], score= a["seconds"])
+        # new_game = Game(email=current_user.email, mode= a["level"], score= a["seconds"])
         db.session.add(new_game)
         db.session.commit()
 

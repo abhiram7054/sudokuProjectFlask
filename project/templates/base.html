@@ -11,8 +11,8 @@
     <!-- <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/base.css') }}"> -->
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../static/styles/base.css">
-    <script src="../static/javascript/base.js" defer></script>
     <script src="../static/javascript/play.js" defer></script>
+    <script src="../static/javascript/base.js" defer></script>
 
 </head>
 
@@ -24,29 +24,29 @@
 
         <ul class="topbar">
             {% if not current_user.is_authenticated %}
-            <li><a href="{{ url_for('main.index') }}" class="work-exp" >
+            <li><a href="{{ url_for('main.index') }}" class="btn" >
                 Home
             </a></li>
             {% endif %}
             {% if current_user.is_authenticated %}
-            <li><a href="{{ url_for('main.dashboard') }}" class="work-exp">
+            <li><a href="{{ url_for('main.dashboard') }}" class="btn">
                 Dashboard
             </a></li>
             {% endif %}
-            <li><a href="{{ url_for('main.rules') }}" class="work-exp">
+            <li><a href="{{ url_for('main.rules') }}" class="btn">
                 Rules
             </a></li>
             {% if current_user.is_authenticated %}
-            <li><a href="{{ url_for('main.profile') }}" class="work-exp">
+            <li><a href="{{ url_for('main.profile') }}" class="btn">
                 Profile
             </a></li>
-            <li><a href="{{ url_for('auth.logout') }}" class="work-exp">
+            <li><a href="{{ url_for('auth.logout') }}" class="btn">
                 Logout
             </a></li>
             {% endif %}
             <!-- <li><a><img src="../static/assets/sun.png" alt="" id="mode"></a></li> -->
             <li>
-                <a class="dark-mode-toggle work-exp" id="dark-mode-toggle">
+                <a class="dark-mode-toggle btn" id="dark-mode-toggle">
                     <i class="bx bxs-moon"></i>
                     <i class="bx bxs-sun"></i>
                     
