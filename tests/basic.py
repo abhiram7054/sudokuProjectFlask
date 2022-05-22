@@ -2,6 +2,8 @@ import unittest
 from project import db
 from project import create_app
 from project.models import User, Game
+from sqlalchemy.orm import Session
+import re
 
 app = create_app(testing=True)
 app.app_context().push()
@@ -201,6 +203,73 @@ class BasicTests(unittest.TestCase):
 
         assert '1234' in html
         assert 'Total Games Played : 5' in html 
+    
+    '''
+    Game(email = "1@gmail.com", mode ='1', score = 123),
+    Game(email = "12@gmail.com", mode ='1', score = 123),
+    Game(email = "123@gmail.com", mode ='1', score = 3699)
+    '''
+    
+    def test_stats_page(self):
+
+        # add game data to database
+        s = Session()
+        objects = [
+            Game(email = "1@gmail.com", name= "hi", mode = '0', score = 123),
+            Game(email = "12@gmail.com", name= "hii", mode ='0', score = 345),
+            Game(email = "123@gmail.com", name= "hiii", mode ='0', score = 3699),
+
+            # no medium mode game results
+
+            Game(email = "1@gmail.com", mode ='2', score = 123),
+            Game(email = "12@gmail.com", mode ='2', score = 123),
+            Game(email = "123@gmail.com", mode ='2', score = 3699),
+        ]
+
+        s.bulk_save_objects(objects)
+        s.commit()
+
+        # register 
+        response_r = self.register('1234@gmail.com',"1234","1234")
+        self.assertEqual(response_r.status_code, 200)
+
+        # login 
+        response_l = self.login("1234@gmail.com", "1234")
+        self.assertEqual(response_l.status_code, 200)
+        assert response_l.request.path == "/dashboard"
+
+        # get stats pages 
+        response_easy = self.app.get('/easyStats') 
+        self.assertEqual(response_easy.status_code, 200)
+
+        response_medium = self.app.get('/mediumStats') 
+        self.assertEqual(response_medium.status_code, 200)
+
+        response_hard = self.app.get('/hardStats')
+        self.assertEqual(response_hard.status_code, 200)
+
+
+        html_easy = response_easy.get_data(as_text=True)
+        html_medium = response_medium.get_data(as_text=True)
+        html_hard = response_hard.get_data(as_text=True)
+
+        assert re.search(r'<tr>\s*'
+                         r'<td class="rank"\s*'
+                         r'1\s*'
+                         r'</td>\s*'
+                         r'<td>\s*'
+                         r'hi\s*'
+                         r'</td>\s*'
+                         r'<td>\s*'
+                         r'<div>2M : 3S\s*',
+                         html_easy) is not None
+
+        assert '1H : 1M : 39S' in html_easy 
+
+        assert re.search(r'<tr>\s*'
+                         r'<td class="rank"\s*' , 
+                         html_medium) is None
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
