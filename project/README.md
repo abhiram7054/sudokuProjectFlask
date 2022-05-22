@@ -41,3 +41,15 @@ In windows, instead of export, we will have to use **set**.
 `flask run`
 
 The above command will compile and runs the application on a locl host server. If it compiles successfully, the please redirect to the addres that is given as the localhost. That will run the application.
+
+## Now, we will see what page does what exactly.
+
+**base.html** - This is the base design page that is included in almost every other page. This page contains the logo and header part.
+
+**index.html** - This is the home page for the website.
+
+**login.html & signup.html** - These pages allows user to either create an account (signup.html) or login (login.html) if user has an account already.
+
+**rules.html** - This page describes the rules of the game and how to play guide to the users with proper description and few hints.
+
+**dashboard.html** - This is the main page where this displays the information of the user, and this activities as a player.
