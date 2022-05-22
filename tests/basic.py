@@ -75,8 +75,18 @@ class BasicTests(unittest.TestCase):
         assert response.request.path == "/login"
 
     # stats page
-    def test_stats_page_invalid(self):
-        response = self.app.get('/stats', follow_redirects=True)
+    def test_easystats_page_invalid(self):
+        response = self.app.get('/easyStats', follow_redirects=True)
+        self.assertIn(b'Please log in to access this page', response.data)
+        assert response.request.path == "/login"
+    
+    def test_mediumstats_page_invalid(self):
+        response = self.app.get('/mediumStats', follow_redirects=True)
+        self.assertIn(b'Please log in to access this page', response.data)
+        assert response.request.path == "/login"
+
+    def test_hardstats_page_invalid(self):
+        response = self.app.get('/hardStats', follow_redirects=True)
         self.assertIn(b'Please log in to access this page', response.data)
         assert response.request.path == "/login"
 
@@ -213,7 +223,6 @@ class BasicTests(unittest.TestCase):
     def test_stats_page(self):
 
         # add game data to database
-        s = Session()
         objects = [
             Game(email = "1@gmail.com", name= "hi", mode = '0', score = 123),
             Game(email = "12@gmail.com", name= "hii", mode ='0', score = 345),
@@ -221,13 +230,13 @@ class BasicTests(unittest.TestCase):
 
             # no medium mode game results
 
-            Game(email = "1@gmail.com", mode ='2', score = 123),
-            Game(email = "12@gmail.com", mode ='2', score = 123),
-            Game(email = "123@gmail.com", mode ='2', score = 3699),
+            Game(email = "1@gmail.com", name= "hi", mode ='2', score = 123),
+            Game(email = "12@gmail.com", name= "hii",mode ='2', score = 123),
+            Game(email = "123@gmail.com", name= "hiii", mode ='2', score = 3699),
         ]
 
-        s.bulk_save_objects(objects)
-        s.commit()
+        db.session.add_all(objects)
+        db.session.commit()
 
         # register 
         response_r = self.register('1234@gmail.com',"1234","1234")
@@ -253,24 +262,16 @@ class BasicTests(unittest.TestCase):
         html_medium = response_medium.get_data(as_text=True)
         html_hard = response_hard.get_data(as_text=True)
 
-        assert re.search(r'<tr>\s*'
-                         r'<td class="rank"\s*'
-                         r'1\s*'
-                         r'</td>\s*'
-                         r'<td>\s*'
-                         r'hi\s*'
-                         r'</td>\s*'
-                         r'<td>\s*'
-                         r'<div>2M : 3S\s*',
-                         html_easy) is not None
-
         assert '1H : 1M : 39S' in html_easy 
 
-        assert re.search(r'<tr>\s*'
-                         r'<td class="rank"\s*' , 
-                         html_medium) is None
+        assert re.search(r'<tr>\s*'r'<td class="rank">\s*1', html_medium) is None
 
+        assert re.search(r'<tr>\s*<td class="rank">\s*1\s*</td>\s*<td>\s*hi\s*</td>\s*<td>\s*<div>2M\s:\s3S</div>',
+                         html_easy) is not None
 
+        assert re.search(r'<td class="rank">\s*3\s*</td>\s*<td>\s*hiii\s*</td>\s*<td>\s*<div>1H\s:\s1M\s:\s39S</div>',
+                         html_hard) is not None
+        
 if __name__ == "__main__":
     unittest.main(verbosity=2)
 
