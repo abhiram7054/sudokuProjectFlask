@@ -15,7 +15,7 @@ def index():
 @main.route('/profile')
 @login_required
 def profile():
-    return render_template('profile.html', name=current_user.name)
+    return render_template('profile.html', name=current_user.name, email=current_user.email)
 
 @main.route('/dashboard')
 @login_required
@@ -78,7 +78,7 @@ def dashboard():
 
     #================================================================================================
 
-    return render_template('dashboard.html', name=current_user.name, bestScoreEasy=bestScore_easy, bestScoreMedium=bestScore_medium, bestScoreHard=bestScore_hard, gamesPlayedEasy=gamesPlayed_easy, gamesPlayedMedium=gamesPlayed_medium, gamesPlayedHard=gamesPlayed_hard, totalGamesPlayed=totalGamesPlayed)
+    return render_template('dashboard.html', name=current_user.name, email=current_user.email,bestScoreEasy=bestScore_easy, bestScoreMedium=bestScore_medium, bestScoreHard=bestScore_hard, gamesPlayedEasy=gamesPlayed_easy, gamesPlayedMedium=gamesPlayed_medium, gamesPlayedHard=gamesPlayed_hard, totalGamesPlayed=totalGamesPlayed)
 
 
 @main.route('/easyStats',  methods=["GET", "POST"])

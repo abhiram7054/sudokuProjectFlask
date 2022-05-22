@@ -1,12 +1,29 @@
 {% extends "base.html" %}
 
 {% block content %}
-<!-- <div class="container"> -->
-  <h1>
-    Name : {{ name }}
-  </h1>
-  <p>Email : {{ current_user.email }}</p>
-  <p>Number of Games Played : yet to be written</p>
-  <p>Your top score is : {{ current_user.score }}</p>
-<!-- </div> -->
+<section class="profile">
+  <h1>Your Profile</h1>
+  <div class="info">
+    <p>Name:</p>
+    <div class="details">
+      {{ name }}
+    </div>
+    <p>Email:</p>
+    <div class="details">
+      {{ email }}
+    </div>
+  </div>
+
+  <h2>About Authors</h2>
+  <div class="info">
+    <p>Author-1:</p>
+    <div class="details">
+      
+    </div>
+    <p>Author-2:</p>
+    <div class="details">
+      ABHIRAMA SATYA SAI PAVAN GUNISETTY, 23005869
+    </div>
+  </div>
+</section>
 {% endblock %}

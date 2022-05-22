@@ -9,6 +9,8 @@ document.querySelector('#dark-mode-toggle').addEventListener('click', () => {
 // initial value
 
 // screens
+
+
 const start_screen = document.querySelector('#start-screen');
 const game_screen = document.querySelector('#game-screen');
 const pause_screen = document.querySelector('#pause-screen');
@@ -25,6 +27,8 @@ const game_level = document.querySelector('#game-level');
 const game_time = document.querySelector('#game-time');
 
 const result_time = document.querySelector('#result-time');
+
+
 
 let finalScore = null;
 
@@ -413,6 +417,7 @@ document.querySelector('#btn-delete').addEventListener('click', () => {
 // -------------
 
 const init = () => {
+
     const darkmode = JSON.parse(localStorage.getItem('darkmode'));
     document.body.classList.add(darkmode ? 'dark' : 'light');
     document.querySelector('meta[name="theme-color"').setAttribute('content', darkmode ? '#1a1a2e' : '#fff');
