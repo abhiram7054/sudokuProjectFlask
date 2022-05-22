@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="stats">
+    <div class="scoreContainer">
+        <div class="scoreBox">
+          <h1 class="modeName"><span>Display stats for</span> EASY</h1>
+        </div>
+        <div class="scoreBox">
+          <h1 class="modeName"><span>Display stats for</span> MEDIUM</h1>
+        </div>
+        <div class="scoreBox">
+          <h1 class="modeName"><span>Display stats for</span> HARD</h1>
+        </div>
+      </div>
+    <div class="table" id="table">
+        <table>
+            <tr class="tableHeading">
+                <td>Email</td>
+                <td>Name</td>
+                <td>Score</td>
+            </tr>
+            {% for player in easyTable %}
+                <tr>
+                <td>
+                    {{player.email}}
+                </td>
+                <td>
+                    {% if player.score>=3600 %}
+                        <div>{{(player.score//60)//60}}H : {{(player.score%3600)//60}}M : {{((player.score%3600)%60)%60}}S</div>
+                    {% else %}
+                        <div>{{player.score//60}}M : {{player.score%60}}S</div>
+                    {% endif %}
+                </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div> 
+
+
+</section>
+
+
+<!-- </div> -->
+{% endblock %}

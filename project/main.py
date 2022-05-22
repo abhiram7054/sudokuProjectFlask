@@ -22,17 +22,73 @@ def dashboard():
 
     print("total number of rows are : ", Game.query.filter_by(email=current_user.email).count())
 
-    games = Game.query.filter((Game.email==current_user.email) & (Game.mode == 0)).all()
-    print(games)
+    # games = len(Game.query.filter((Game.email==current_user.email) & (Game.mode == 0)).all())
+    # games = Game.query.with_entities(Game.score).filter((Game.email==current_user.email) & (Game.mode == 1)).order_by(Game.score.asc()).all()
+    # print(games)
 
-    # if db.session.query(Game).filter_by(email=current_user.email).count() > 1 :
-    if Game.query.filter_by(email=current_user.email).count() > 1 :
-        bestScore = Game.query.with_entities(Game.score).filter_by(email=current_user.email).order_by(Game.score.asc()).limit(2)[1][0]
-        print(bestScore)
+    totalGamesPlayed = Game.query.filter_by(email=current_user.email).count()
+
+    #================================================================================================
+
+    # for easy mode
+
+    if len(Game.query.filter((Game.email==current_user.email) & (Game.mode == 0)).all()) > 0:
+        easySeconds = Game.query.with_entities(Game.score).filter((Game.email==current_user.email) & (Game.mode == 0)).order_by(Game.score.asc()).first()[0]
+        if easySeconds >=3600 :
+            easyMinutes, easySeconds = divmod(easySeconds, 60)
+            easyHours, easyMinutes = divmod(easyMinutes, 60)
+            bestScore_easy = str(easyHours) + " Hrs " + str(easyMinutes) + " Mins " + str(easySeconds) + " Secs"
+        else:
+            bestScore_easy = str(easySeconds//60) + " Mins " + str(easySeconds%60) + " Secs"
+        gamesPlayed_easy = len(Game.query.filter((Game.email==current_user.email) & (Game.mode == 0)).all())
     else:
-        bestScore = Game.query.with_entities(Game.score).filter_by(email=current_user.email).order_by(Game.score.asc()).first()[0]
-        print(bestScore)
-    return render_template('dashboard.html', name=current_user.name, bestScore=bestScore)
+        bestScore_easy = 0
+        gamesPlayed_easy = 0
+
+    # for medium mode
+
+    if len(Game.query.filter((Game.email==current_user.email) & (Game.mode == 1)).all()) > 0:
+        mediumSeconds = Game.query.with_entities(Game.score).filter((Game.email==current_user.email) & (Game.mode == 1)).order_by(Game.score.asc()).first()[0]
+        if mediumSeconds >=3600 :
+            mediumMinutes, mediumSeconds = divmod(mediumSeconds, 60)
+            mediumHours, mediumMinutes = divmod(mediumMinutes, 60)
+            bestScore_medium = str(mediumHours) + " Hrs " + str(mediumMinutes) + " Mins " + str(mediumSeconds) + " Secs"
+        else:
+            bestScore_medium = str(mediumSeconds//60) + " Mins " + str(mediumSeconds%60) + " Secs"
+        gamesPlayed_medium = len(Game.query.filter((Game.email==current_user.email) & (Game.mode == 1)).all())
+    else:
+        bestScore_medium = 0
+        gamesPlayed_medium = 0
+
+    # for hard mode
+
+    if len(Game.query.filter((Game.email==current_user.email) & (Game.mode == 2)).all()) > 0:
+        hardSeconds = Game.query.with_entities(Game.score).filter((Game.email==current_user.email) & (Game.mode == 2)).order_by(Game.score.asc()).first()[0]
+        if hardSeconds >=3600 :
+            hardMinutes, hardSeconds = divmod(hardSeconds, 60)
+            hardHours, hardMinutes = divmod(hardMinutes, 60)
+            bestScore_hard = str(hardHours) + " Hrs " + str(hardMinutes) + " Mins " + str(hardSeconds) + " Secs"
+        else:
+            bestScore_hard = str(hardSeconds//60) + " Mins " + str(hardSeconds%60) + " Secs"
+        gamesPlayed_hard = len(Game.query.filter((Game.email==current_user.email) & (Game.mode == 2)).all())
+    else:
+        bestScore_hard = 0
+        gamesPlayed_hard = 0
+
+    #================================================================================================
+
+    return render_template('dashboard.html', name=current_user.name, bestScoreEasy=bestScore_easy, bestScoreMedium=bestScore_medium, bestScoreHard=bestScore_hard, gamesPlayedEasy=gamesPlayed_easy, gamesPlayedMedium=gamesPlayed_medium, gamesPlayedHard=gamesPlayed_hard, totalGamesPlayed=totalGamesPlayed)
+
+
+@main.route('/stats',  methods=["GET", "POST"])
+@login_required
+def stats():
+
+    easyTable = Game.query.filter(Game.mode == 0).order_by(Game.score.asc()).all()
+    mediumTable = Game.query.filter(Game.mode == 1).order_by(Game.score.asc()).all()
+    hardTable = Game.query.filter(Game.mode == 2).order_by(Game.score.asc()).all()
+    if request.method == "GET":
+         return render_template("stats.html", easyTable = easyTable, mediumTable=mediumTable, hardTable=hardTable)
 
 @main.route('/play')
 @login_required
@@ -48,6 +104,7 @@ def gameResults():
         a = json.loads(a)
         # print("a is :", type(a))
         # print(a["level"])
+        # new_game = Game(email=current_user.email, name=current_user.name, mode= a["level"], score= a["seconds"])
         new_game = Game(email=current_user.email, mode= a["level"], score= a["seconds"])
         db.session.add(new_game)
         db.session.commit()

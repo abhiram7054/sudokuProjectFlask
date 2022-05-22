@@ -26,6 +26,7 @@ body {
     --yellow : #FEE715FF;
     --text : #fff;
     --black : black;
+    --gray : gainsboro;
 }
 
 /* this is when we chnage the mode from dark to light or vice versa  */
@@ -117,6 +118,10 @@ header {
 
 section {
     padding: 120px 10%;
+}
+
+.stats {
+    padding: 80px 10%;
 }
 
 .home {
@@ -289,7 +294,7 @@ section {
     width: auto;
     padding: 10px 30px;
     font-size: 32px;
-    margin: 20px 30px;
+    margin: 10px 10px;
 }
 
 .text {
@@ -332,13 +337,132 @@ section {
 .welcome{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    margin-bottom: 100px;
 }
 
 .welcomeText{
     color: var(--yellow);
 }
+
+.scoreContainer{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+    grid-gap: 30px;
+    align-items: stretch;
+    margin-top: 40px;
+}
+
+.playContainer {
+    text-align: center;
+    font-size: 22px;
+    color: var(--yellow);
+    /* grid-gap: 250px; */
+}
+
+.playContainer .scoreBox {
+    padding: 20px;
+    transform: none;
+    box-shadow: none;
+    font-weight: bold;
+}
+
+.playContainer .scoreBox:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 0px 15px 0px var(--black);
+    background: var(--gray);
+    color: var(--black);
+}
+
+.scoreBox {
+    background: var(--black);
+    border-radius: 10px;
+    padding: 30px;
+    cursor: pointer;
+    transition: 0.2s;
+    transform: translateY(-10px);
+    box-shadow: 0px 0px 15px 0px var(--text);
+    
+}
+
+.scoreBox h1 {
+    text-align: center;
+    color: var(--yellow);
+    font-weight: bolder;
+    margin-bottom: 20px;
+}
+
+.stats .scoreBox{
+    padding: 15px;
+}
+
+.stats .scoreBox:focus{
+    background: red;
+}
+.stats .scoreBox h1{
+    margin-bottom: 0;
+}
+.stats .scoreBox span{
+    text-transform: none;
+    color: var(--gray);
+    font-size: 16px;
+}
+.scoreBox p {
+    text-align: center;
+    color: var(--black);
+    background: var(--gray);
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: bolder;
+    font-size: small;
+    line-height: 40px;
+    /* margin-bottom: 10px; */
+}
+
+.scoreBox span {
+    font-size: 20px;
+    color: var(--yellow);
+    text-transform: uppercase;
+    background: var(--black);
+    border-radius: 10px;
+    padding: 5px 10px;
+}
+
+.totalGames {
+    /* margin-top: 20px; */
+    text-align: center;
+    background: var(--black);
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: solid;
+    border-color: var(--gray);
+    color: var(--gray);
+}
+
+table {
+    margin-top: 40px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tableHeading {
+    color: var(--yellow);
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+td {
+    width: 33.3%;
+    text-align: center;
+    background: var(--black);
+    font-size: larger;
+    padding: 10px 10px;
+    border-radius: 10px;
+}
+
+
 @media (max-width: 1100px) {
 
     .home-desc h1{

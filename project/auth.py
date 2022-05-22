@@ -49,15 +49,15 @@ def signup_post():
     # create a new user with the form data. Hash the password so the plaintext version isn't saved.
     new_user = User(email=email, name=name, password=generate_password_hash(password, method='sha256'))
 
-    new_game_easy = Game(email=email, mode= 0, score=0 )
+    # new_game_easy = Game(email=email, mode= 0, score=0 )
         
 
     # add the new user to the database
     db.session.add(new_user)
     db.session.commit()
 
-    db.session.add(new_game_easy)
-    db.session.commit()
+    # db.session.add(new_game_easy)
+    # db.session.commit()
 
     return redirect(url_for('auth.login'))
 

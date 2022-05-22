@@ -2,24 +2,42 @@
 
 {% block content %}
 <!-- <div class="container"> -->
-  <section>
-  <div class="welcome">
-    <h1 class="welcomeText">WELCOME</h1>
-    <h1 class="pageHeading ruleHeading username">
-      {{ name }}
-    </h1>
-  </div>
-    
-  <h1>
-      Top score : {{ bestScore//60 }} mins {{ bestScore%60 }} seconds
-  </h1>
+  <section class="dashboard">
+    <div class="welcome">
+      <h1 class="welcomeText">WELCOME 
+        <span class="pageHeading ruleHeading username">
+        {{ name }}
+        </span>
+      </h1>
+      <div class="totalGames"> Total Games Played : {{ totalGamesPlayed }}</div>
+    </div>
 
-  <div class="buttons" id="playNow">
-    <!-- <div class="work-exp"> -->
-      <!-- <div class="work-exp" onclick="playOption()" >Play Now</div> -->
-      <a href="{{ url_for('main.play') }}" class="work-exp" onclick="playOption()" >Play Now</a>
-    <!-- </div> -->
-</div>
+
+    
+  <div class="scoreContainer">
+    <div class="scoreBox">
+      <h1 class="modeName">EASY</h1>
+      <p class="bestScore">BEST SCORE : <span> {{ bestScoreEasy }}</span> <br> GAMES PLAYED : <span>{{ gamesPlayedEasy }}</span></p>
+    </div>
+    <div class="scoreBox">
+      <h1 class="modeName">MEDIUM</h1>
+      <p class="bestScore">BEST SCORE : <span> {{ bestScoreMedium }}</span> <br> GAMES PLAYED : <span>{{ gamesPlayedMedium }}</span></p>
+    </div>
+    <div class="scoreBox">
+      <h1 class="modeName">HARD</h1>
+      <p class="bestScore">BEST SCORE : <span> {{ bestScoreHard }}</span> <br> GAMES PLAYED : <span>{{ gamesPlayedHard }}</span></p>
+    </div>
+  </div>
+  <div class="scoreContainer playContainer">
+    <a href="{{ url_for('main.stats') }}" >
+      <div class="scoreBox">View Full Stats</div>
+    </a>
+    <a href="{{ url_for('main.play') }}" >
+      <div class="scoreBox">Play New Game</div>
+    </a>
+  </div>
+
+
 </section>
 
 
