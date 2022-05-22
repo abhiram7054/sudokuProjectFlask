@@ -6,9 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home|Sudoku</title>
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" /> -->
     <script src="https://kit.fontawesome.com/d5201e01cb.js" crossorigin="anonymous"></script>
-    <!-- <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/base.css') }}"> -->
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../static/styles/base.css">
     <script src="../static/javascript/play.js" defer></script>
@@ -37,14 +35,10 @@
                 Rules
             </a></li>
             {% if current_user.is_authenticated %}
-            <!-- <li><a href="{{ url_for('main.profile') }}" class="btn">
-                Info
-            </a></li> -->
             <li><a href="{{ url_for('auth.logout') }}" class="btn">
                 Logout
             </a></li>
             {% endif %}
-            <!-- <li><a><img src="../static/assets/sun.png" alt="" id="mode"></a></li> -->
             <li>
                 <a class="dark-mode-toggle btn" id="dark-mode-toggle">
                     <i class="bx bxs-moon"></i>
@@ -55,14 +49,8 @@
         </ul>
     </header>
 
-    <!-- <section class="home" id="home"> -->
-        <!-- <div class="hero-body">
-            <div class="container has-text-centered"> -->
                {% block content %}
                {% endblock %}
-            <!-- </div>
-        </div> -->
-    <!-- </section> -->
 </body>
 
 </html>

@@ -21,12 +21,6 @@ def profile():
 @login_required
 def dashboard():
 
-    print("total number of rows are : ", Game.query.filter_by(email=current_user.email).count())
-
-    # games = len(Game.query.filter((Game.email==current_user.email) & (Game.mode == 0)).all())
-    # games = Game.query.with_entities(Game.score).filter((Game.email==current_user.email) & (Game.mode == 1)).order_by(Game.score.asc()).all()
-    # print(games)
-
     totalGamesPlayed = Game.query.filter_by(email=current_user.email).count()
 
     #================================================================================================
@@ -84,7 +78,6 @@ def dashboard():
 @main.route('/easyStats',  methods=["GET", "POST"])
 @login_required
 def easyStats():
-    # easyTable = Game.query.filter(Game.mode == 0).order_by(Game.score.asc()).all()
 
     easyQuery = db.session.query(
     Game, 
@@ -107,7 +100,6 @@ def easyStats():
 @login_required
 def mediumStats():
 
-    # mediumTable = Game.query.filter(Game.mode == 1).order_by(Game.score.asc()).all()
 
     mediumQuery = db.session.query(
     Game, 
@@ -155,10 +147,7 @@ def gameResults():
         print("the final score is : ",request.form.get('finalScore'))
         a = request.form.get('finalScore')
         a = json.loads(a)
-        # print("a is :", type(a))
-        # print(a["level"])
         new_game = Game(email=current_user.email, name=current_user.name, mode= a["level"], score= a["seconds"])
-        # new_game = Game(email=current_user.email, mode= a["level"], score= a["seconds"])
         db.session.add(new_game)
         db.session.commit()
 
@@ -166,7 +155,6 @@ def gameResults():
 
 @main.route('/upload', methods=['POST'])
 def upload():
-    # code to validate and add user to database goes here
     return redirect(url_for('main.dashboard'))
 
 @main.route('/rules')

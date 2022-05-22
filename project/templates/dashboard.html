@@ -1,15 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-<!-- <div class="container"> -->
   <section class="dashboard">
     <div class="welcome">
-      <h2 class="welcomeText">WELCOME 
+      <h1 class="welcomeText">WELCOME 
         <span class="pageHeading ruleHeading username">
         {{ name }}
         </span>
         Email : {{ email }}
-      </h2>
+      </h1>
       <div class="totalGames"> Total Games Played : {{ totalGamesPlayed }}</div>
     </div>
 
@@ -43,11 +42,9 @@
     <div class="social-media"><a href="https://www.facebook.com/sharer.php?u=http://127.0.0.1:5000/dashboard" class="fb-btn"><i class="fa-brands fa-facebook fa-2x"></i></a></div>
     <div class="social-media"><a href="https://www.linkedin.com/shareArticle?url=http://127.0.0.1:5000/dashboard&title='Hello everyone, please check my best scores of Sudoku !!!'" class="linkedin-btn"><i class="fa-brands fa-linkedin fa-2x"></i></a></div>
     <div class="social-media"><a href="https://api.whatsapp.com/send?text=http://127.0.0.1:5000/dashboard 'Hello everyone, please check my best scores of Sudoku !!!'" class="whatsapp-btn"><i class="fa-brands fa-whatsapp fa-2x"></i></a></div>
-</div>
+  </div>
 
 
 </section>
 
-
-<!-- </div> -->
 {% endblock %}

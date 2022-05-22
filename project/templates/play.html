@@ -5,24 +5,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- mobile status bar color -->
     <meta name="theme-color" content="#fff">
     <title>Sudoku</title>
-    <!-- <link rel="shortcut icon" href="./static/images/icon.png" type="image/x-icon"> -->
-    <!-- google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
-    <!-- box icons -->
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <!-- app css -->
     
     <link rel="stylesheet" href="../static/styles/play.css">
 
     <script src="https://kit.fontawesome.com/d5201e01cb.js" crossorigin="anonymous"></script>
 
-    <script src="../static/javascript/constant.js" defer></script>
-    <script src="../static/javascript/sudoku.js" defer></script>
+    <script src="../static/javascript/const.js" defer></script>
+    <script src="../static/javascript/game.js" defer></script>
     <script src="../static/javascript/play.js" defer></script>
     <script src="../static/javascript/base.js" defer></script>
 
@@ -30,7 +25,6 @@
 
 <body>
 
-    <!-- top nav -->
     <header>
         <a><img src="../static/assets/textLogo.png" alt="" class="cod"></a>
         <div class="menuIcon"><i class="fa-solid fa-bars fa-2xl"></i></div>
@@ -50,14 +44,10 @@
                 Rules
             </a></li>
             {% if current_user.is_authenticated %}
-            <!-- <li><a href="{{ url_for('main.profile') }}" class="btn">
-                Info
-            </a></li> -->
             <li><a href="{{ url_for('auth.logout') }}" class="btn">
                 Logout
             </a></li>
             {% endif %}
-            <!-- <li><a><img src="../static/assets/sun.png" alt="" id="mode"></a></li> -->
             <li>
                 <a class="dark-mode-toggle btn" id="dark-mode-toggle">
                     <i class="bx bxs-sun"></i>
@@ -67,128 +57,115 @@
         </ul>
     </header>
 
-    <!-- end top nav -->
-
-    <!-- main -->
-    <div class="main">
-        <div class="screen">
-            <!-- start screen -->
-            <div class="start-screen active" id="start-screen">
-                <!-- <input type="text" placeholder="Your name" maxlength="11" class="input-name" id="input-name"> -->
+    <div class="main-display">
+        <div class="screen-display">
+            <div class="start-screen-display active" id="start-screen">
                 <div class="btn" id="btn-level">
                     Easy
                 </div>
                 <div class="btn" id="btn-continue">Continue</div>
-                <div class="btn btn-blue" id="btn-play">New game</div>
+                <div class="btn btn-yellow" id="btn-play">New game</div>
                 
             </div>
-            <!-- end start screen -->
 
-            <!-- game screen -->
-            <div class="main-game" id="game-screen">
-                <div class="main-sudoku-grid">
+            <div class="mainGame-display" id="game-screen">
+                <div class="mainSudoku-grid">
                     <!-- 81 cells -->
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
-                    <div class="main-grid-cell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
+                    <div class="mainGridCell"></div>
                 </div>
 
-                <div class="main-game-info">
-                    <div class="main-game-info-box main-game-info-time">
+                <div class="mainGameInfo">
+                    <div class="mainGameInfoBox mainGameInfoTime">
                         <span id="game-time">10:20</span>
                         <div class="pause-btn" id="btn-pause">
                             <i class="bx bx-pause"></i>
                         </div>
                     </div>
-                    <div class="main-game-info-box main-game-info-level">
+                    <div class="mainGameInfoBox mainGameInfoLevel">
                         <span id="game-level">Easy</span>
                     </div>
                 </div>
 
-                <!-- <div class="main-game-info-box main-game-info-time">
-                    <span id="game-time">10:20</span>
-                    <div class="pause-btn" id="btn-pause">
-                        <i class="bx bx-pause"></i>
-                    </div>
-                </div> -->
 
                 <div class="numbers">
                     <div class="number">1</div>
@@ -200,21 +177,15 @@
                     <div class="number">7</div>
                     <div class="number">8</div>
                     <div class="number">9</div>
-                    <div class="delete" id="btn-delete">X</div>
+                    <div class="delete" id="btn-delete">Del</div>
                 </div>
             </div>
-            <!-- end game screen -->
-
-            <!-- pause screen -->
-            <div class="pause-screen" id="pause-screen">
-                <div class="btn btn-blue" id="btn-resume">Resume</div>
+            <div class="pauseDisplay" id="pause-screen">
+                <div class="btn btn-yellow" id="btn-resume">Resume</div>
                 <div class="btn" id="btn-new-game">New game</div>
             </div>
-            <!-- end pause screen -->
-
-            <!-- result screen -->
-            <div class="result-screen" id="result-screen">
-                <div class="congrate">Completed</div>
+            <div class="result-display" id="result-screen">
+                <div class="congratulate">Completed</div>
                 <div class="info">Time</div>
                 <div id="result-time"></div>
                 <div class="btn" id="btn-new-game-2">New game</div>
@@ -224,10 +195,8 @@
                     </form>
                 </div>
             </div>
-            <!-- end result screen -->
         </div>
     </div>
-    <!-- end main -->
 
 </body>
 

@@ -567,14 +567,17 @@ td {
     color: var(--text);
     text-shadow: 2px 2px var(--yellow);
     transition: 0s;
+}
 
+.reference {
+    text-align: center;
+    margin: 30px 0px;
+}
+
+.reference a{
+    color: var(--yellow);
+}
 @media (max-width: 1100px) {
-
-    /* .home-desc h1{
-        color: var(--white);
-        font-weight: bolder;
-        font-size: 50px;
-    } */
 
     .cod {
         width: 160px;
@@ -606,6 +609,14 @@ td {
 
     .topbar.active{
         top: 100%;
+    }
+
+    .welcome {
+        flex-direction: column;
+    }
+
+    .welcome h1 {
+        line-height: 80px;
     }
 
 }

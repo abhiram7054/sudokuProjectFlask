@@ -2,7 +2,6 @@ document.querySelector('#dark-mode-toggle').addEventListener('click', () => {
     document.body.classList.toggle('dark');
     const isDarkMode = document.body.classList.contains('dark');
     localStorage.setItem('darkmode', isDarkMode);
-    // chang mobile status bar color
     document.querySelector('meta[name="theme-color"').setAttribute('content', isDarkMode ? '#1a1a2e' : '#fff');
 });
 
@@ -11,7 +10,7 @@ const start_screen = document.querySelector('#start-screen');
 const game_screen = document.querySelector('#game-screen');
 const pause_screen = document.querySelector('#pause-screen');
 const result_screen = document.querySelector('#result-screen');
-const cells = document.querySelectorAll('.main-grid-cell');
+const cells = document.querySelectorAll('.mainGridCell');
 
 const number_inputs = document.querySelectorAll('.number');
 
@@ -296,10 +295,6 @@ const initCellsEvent = () => {
 const startGame = () => {
     start_screen.classList.remove('active');
     game_screen.classList.add('active');
-
-    // player_name.innerHTML = name_input.value.trim();
-    // setPlayerName(name_input.value.trim());
-
     game_level.innerHTML = CONSTANT.LEVEL_NAME[level_index];
 
     showTime(seconds);
