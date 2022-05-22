@@ -6,19 +6,12 @@ document.querySelector('#dark-mode-toggle').addEventListener('click', () => {
     document.querySelector('meta[name="theme-color"').setAttribute('content', isDarkMode ? '#1a1a2e' : '#fff');
 });
 
-// initial value
-
-// screens
-
 
 const start_screen = document.querySelector('#start-screen');
 const game_screen = document.querySelector('#game-screen');
 const pause_screen = document.querySelector('#pause-screen');
 const result_screen = document.querySelector('#result-screen');
-// ----------
 const cells = document.querySelectorAll('.main-grid-cell');
-
-// const name_input = document.querySelector('#input-name');
 
 const number_inputs = document.querySelectorAll('.number');
 
@@ -44,11 +37,8 @@ let su_answer = undefined;
 
 let selected_cell = -1;
 
-// --------
-
 const getGameInfo = () => JSON.parse(localStorage.getItem('game'));
 
-// add space for each 9 cells
 const initGameGrid = () => {
     let index = 0;
 
@@ -61,10 +51,6 @@ const initGameGrid = () => {
         index++;
     }
 }
-// ----------------
-
-// const setPlayerName = (name) => localStorage.setItem('player_name', name);
-// const getPlayerName = () => localStorage.getItem('player_name');
 
 const showTime = (seconds) => new Date(seconds * 1000).toISOString().substr(11, 8);
 
@@ -77,10 +63,8 @@ const clearSudoku = () => {
 }
 
 const initSudoku = () => {
-    // clear old sudoku
     clearSudoku();
     resetBg();
-    // generate sudoku puzzle here
     su = sudokuGen(level);
     su_answer = [...su.question];
 
@@ -88,7 +72,6 @@ const initSudoku = () => {
 
     saveGameInfo();
 
-    // show sudoku to div
     for (let i = 0; i < Math.pow(CONSTANT.GRID_SIZE, 2); i++) {
         let row = Math.floor(i / CONSTANT.GRID_SIZE);
         let col = i % CONSTANT.GRID_SIZE;
@@ -115,8 +98,6 @@ const loadSudoku = () => {
     game_time.innerHTML = showTime(seconds);
 
     level_index = game.level;
-
-    // show sudoku to div
     for (let i = 0; i < Math.pow(CONSTANT.GRID_SIZE, 2); i++) {
         let row = Math.floor(i / CONSTANT.GRID_SIZE);
         let col = i % CONSTANT.GRID_SIZE;
@@ -236,12 +217,6 @@ const saveGameInfo = () => {
         }
     }
     localStorage.setItem('game', JSON.stringify(game));
-    // $.ajax({
-    //     url: "/test",
-    //     type: "POST",
-    //     contentType: "application/json",
-    //     data: "game"
-    // });
 }
 
 const removeGameInfo = () => {
@@ -264,7 +239,6 @@ function sendGameInfo() {
     request.open('POST', '/gameResults', true);
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.onreadystatechange = function () {
-        // do something
     };
     request.send("finalScore=" + finalScore);
 }
@@ -279,9 +253,7 @@ const initNumberInputEvent = () => {
                 let row = Math.floor(selected_cell / CONSTANT.GRID_SIZE);
                 let col = selected_cell % CONSTANT.GRID_SIZE;
                 su_answer[row][col] = index + 1;
-                // save game
                 saveGameInfo()
-                // -----
                 removeErr();
                 checkErr(index + 1);
                 cells[selected_cell].classList.add('zoom-in');
@@ -297,7 +269,6 @@ const initNumberInputEvent = () => {
                     removeGameInfo();
                     showResult();
                 }
-                // ----
             }
         })
     })
@@ -351,7 +322,6 @@ const returnStartScreen = () => {
     result_screen.classList.remove('active');
 }
 
-// add button event
 document.querySelector('#btn-level').addEventListener('click', (e) => {
     level_index = level_index + 1 > CONSTANT.LEVEL.length - 1 ? 0 : level_index + 1;
     level = CONSTANT.LEVEL[level_index];
@@ -359,29 +329,13 @@ document.querySelector('#btn-level').addEventListener('click', (e) => {
 });
 
 document.querySelector('#btn-play').addEventListener('click', () => {
-    // if (name_input.value.trim().length > 0) {
     initSudoku();
     startGame();
-    // } else {
-    //     name_input.classList.add('input-err');
-    //     setTimeout(() => {
-    //         name_input.classList.remove('input-err');
-    //         name_input.focus();
-    //     }, 500);
-    // }
 });
 
 document.querySelector('#btn-continue').addEventListener('click', () => {
-    // if (name_input.value.trim().length > 0) {
     loadSudoku();
     startGame();
-    // } else {
-    //     name_input.classList.add('input-err');
-    //     setTimeout(() => {
-    //         name_input.classList.remove('input-err');
-    //         name_input.focus();
-    //     }, 500);
-    // }
 });
 
 document.querySelector('#btn-pause').addEventListener('click', () => {
@@ -414,7 +368,6 @@ document.querySelector('#btn-delete').addEventListener('click', () => {
 
     removeErr();
 })
-// -------------
 
 const init = () => {
 
@@ -429,12 +382,6 @@ const init = () => {
     initGameGrid();
     initCellsEvent();
     initNumberInputEvent();
-
-    // if (getPlayerName()) {
-    //     name_input.value = getPlayerName();
-    // } else {
-    //     name_input.focus();
-    // }
 }
 
 init();

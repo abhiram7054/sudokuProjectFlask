@@ -326,7 +326,7 @@ section {
     width: auto;
     padding: 10px 30px;
     font-size: 32px;
-    margin: 10px 10px;
+    margin: 10px 20px;
 }
 
 .text {
@@ -565,7 +565,7 @@ td {
 
 .social-media:hover{
     color: var(--text);
-    text-shadow: 2px 4px var(--yellow);
+    text-shadow: 2px 2px var(--yellow);
     transition: 0s;
 
 @media (max-width: 1100px) {

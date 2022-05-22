@@ -1,0 +1,20 @@
+'cfedb89,Abhiram Gunisetty,abhi.gunisetti@gmail.com,Sun, 22 May 2022 23:58:15 +0800,share button added,'
+ 1389 files changed, 226830 insertions(+), 36 deletions(-)
+
+'22fab13,Abhiram Gunisetty,abhi.gunisetti@gmail.com,Sun, 22 May 2022 19:16:02 +0800,changes to stat pages,'
+ 15 files changed, 321 insertions(+), 99 deletions(-)
+
+'6da6b29,Abhiram Gunisetty,abhi.gunisetti@gmail.com,Sun, 22 May 2022 12:09:12 +0800,new chnages,'
+ 11 files changed, 275 insertions(+), 38 deletions(-)
+
+'90e06fc,Abhiram Gunisetty,abhi.gunisetti@gmail.com,Fri, 20 May 2022 00:01:26 +0800,added rules page,'
+ 11 files changed, 165 insertions(+), 56 deletions(-)
+
+'b3d4dca,Abhiram Gunisetty,abhi.gunisetti@gmail.com,Thu, 19 May 2022 21:33:46 +0800,errors rectified,'
+ 10 files changed, 323 insertions(+), 136 deletions(-)
+
+'1be33b4,Abhiram Gunisetty,abhi.gunisetti@gmail.com,Thu, 19 May 2022 10:30:44 +0800,queries included,'
+ 17 files changed, 1399 insertions(+), 8 deletions(-)
+
+'7eb9aab,Abhiram Gunisetty,abhi.gunisetti@gmail.com,Sat, 14 May 2022 04:02:08 +0800,first commit,'
+ 2605 files changed, 529827 insertions(+)
