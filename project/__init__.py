@@ -1,14 +1,20 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+import os
 
 # init SQLAlchemy so we can use it later in our models
 db = SQLAlchemy()
 
-def create_app():
+def create_app(testing=False):
     app = Flask(__name__)
 
     app.config['SECRET_KEY'] = 'agile-web-development'
+
+    basedir = os.path.abspath(os.path.dirname(__file__))
+    if testing:
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+ os.path.join(basedir,'tests/test.db')
+
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
 
     db.init_app(app)
