@@ -8,6 +8,36 @@ Let us see how do we run the project.
 
 `mkdir sudoku`
 
-Now unzip ourfiles and transfer them to this folder.
+Now unzip ourfiles and transfer them to this folder. And then enter into this folder with `cd sudoku`
 
 ### Create a virtual environment
+
+`python3 -m venv auth`
+
+This will create the python virtual environment named "auth"
+
+### Activate the virtual environment.
+
+`.\auth\Scripts\activate`
+
+This is the code to activate the virtual env and this might chnage with respect to OS. Please check.
+
+### Install required libraries and create required environment
+
+Example: `pip install flask flask-sqlalchemy flask-login`
+
+Install all the libraries and modules mentioned in the requirements.txt file using pip install. this will help you create desired environment to run the app.
+
+### Set the FLASK_APP and FLASK_DEBUG values.
+
+`export FLASK_APP=project export FLASK_DEBUG=1`
+
+In windows, instead of export, we will have to use **set**.
+
+**We have also included sample database "db.sqlite" for testing purposes.**
+
+### Run the app
+
+`flask run`
+
+The above command will compile and runs the application on a locl host server. If it compiles successfully, the please redirect to the addres that is given as the localhost. That will run the application.
