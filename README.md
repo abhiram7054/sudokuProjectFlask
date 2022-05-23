@@ -36,7 +36,16 @@ Install all the libraries and modules mentioned in the requirements.txt file usi
 
 In windows, instead of export, we will have to use **set**.
 
-**We have also included sample database "db.sqlite" for testing purposes.**
+**We have also included sample database "db.sqlite" for testing purposes. Hence, we are not required to run the code for database creation as there is one database already.**
+
+**NOT REQUIRED FOR NOW** {Incase if the database is not present, these codes are used to create the database.
+
+Activate python environment with `python3` and then inside the python env,
+
+`from project import db, create_app, models` <br>
+`db.create_all(app=create_app())`
+
+Make sure you are in the main directory where you can see the project directory.} **NOT REQUIRED FOR NOW**
 
 ### Run the app
 
