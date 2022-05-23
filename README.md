@@ -77,7 +77,7 @@ After coming out of the project folder, you will see the tests folder. That has 
 To run these files, we need to navigate back to the main folder and now we can see tests folder and other folders.
 Now, run these in the terminal
 
-`python -W ignore -m tests.unit_test`
+`python -W ignore -m tests.unit_test` <br>
 `python -W ignore -m tests.basic`
 
 This will run the tests and will give the desired test results.
