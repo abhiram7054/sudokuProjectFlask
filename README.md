@@ -81,3 +81,5 @@ Now, run these in the terminal
 `python -W ignore -m tests.basic`
 
 This will run the tests and will give the desired test results.
+
+**Also, while validating html and css, our html files are giving the errors for using the flask related syntax in the html documents. We couldn't find other alternative to get rid of those errors**

@@ -1,14 +1,50 @@
+'1951df7,Abhiram Gunisetty,abhi.gunisetti@gmail.com,Mon, 23 May 2022 08:02:37 +0800,readme.md-2,'
+ 4 files changed, 1 insertion(+), 1 deletion(-)
+ 
+'b631a85,Xiao,Xiaoyu@192.168.0.10,Mon, 23 May 2022 08:01:12 +0800,readme page addition,'
+ 1 file changed,  6 insertions(+), 2 deletion(-)
+
+'50d7762,Abhiram Gunisetty,abhi.gunisetti@gmail.com,Mon, 23 May 2022 08:00:42 +0800,readme.md,'
+ 9 files changed, 94 insertions(+), 67 deletions(-)
+
+'2fd3282,Abhiram Gunisetty,abhi.gunisetti@gmail.com,Mon, 23 May 2022 07:23:49 +0800,final day chnages-3,'
+ 1 file changed, 12 insertions(+)
+
+'1482d88,Abhiram Gunisetty,abhi.gunisetti@gmail.com,Mon, 23 May 2022 07:18:36 +0800,final day chnages-2,'
+ 1 file changed, 31 insertions(+), 1 deletion(-)
+ 
+'7b66b38,Xiao,Xiaoyu@192.168.0.10,Mon, 23 May 2022 05:21:48 +0800,stats page,'
+ 1 file changed,  16 insertions(+), 18 deletion(-)
+
+'a83cf95,Abhiram Gunisetty,abhi.gunisetti@gmail.com,Mon, 23 May 2022 07:10:37 +0800,final day chnages,'
+ 22 files changed, 246 insertions(+), 378 deletions(-)
+
+'6dc8b0a,Abhiram Gunisetty,abhi.gunisetti@gmail.com,Mon, 23 May 2022 00:38:40 +0800,tests,'
+ 10 files changed, 406 insertions(+), 121 deletions(-)
+
 'cfedb89,Abhiram Gunisetty,abhi.gunisetti@gmail.com,Sun, 22 May 2022 23:58:15 +0800,share button added,'
  1389 files changed, 226830 insertions(+), 36 deletions(-)
+ 
+'026bcf9,Xiao,Xiaoyu@192.168.0.10,Sun, 22 May 2022 22:32:21 +0800,stats page,'
+ 1 file changed, 69 insertions(+)
+ 
+'a8775ee,Xiao,Xiaoyu@192.168.0.10,Sun, 22 May 2022 22:36:19 +0800,stats page,'
+ 1 file changed, 23 insertions(+), 22 deletions(-)
 
 '22fab13,Abhiram Gunisetty,abhi.gunisetti@gmail.com,Sun, 22 May 2022 19:16:02 +0800,changes to stat pages,'
  15 files changed, 321 insertions(+), 99 deletions(-)
 
+'02df7da,Xiao,Xiaoyu@192.168.0.10,Sun, 22 May 2022 14:11:41 +0800,test,'
+ 4 files changed, 278 insertions(+), 1 deletion(-)
+ 
 '6da6b29,Abhiram Gunisetty,abhi.gunisetti@gmail.com,Sun, 22 May 2022 12:09:12 +0800,new chnages,'
  11 files changed, 275 insertions(+), 38 deletions(-)
 
 '90e06fc,Abhiram Gunisetty,abhi.gunisetti@gmail.com,Fri, 20 May 2022 00:01:26 +0800,added rules page,'
  11 files changed, 165 insertions(+), 56 deletions(-)
+ 
+'33ed8ba,Xiao,Xiaoyu@192.168.0.10,Fri, 19 May 2022 23:05:13 +0800,chnages to the errors,'
+ 15 files changed, 178 insertions(+), 68 deletions(-)
 
 'b3d4dca,Abhiram Gunisetty,abhi.gunisetti@gmail.com,Thu, 19 May 2022 21:33:46 +0800,errors rectified,'
  10 files changed, 323 insertions(+), 136 deletions(-)
@@ -16,5 +52,8 @@
 '1be33b4,Abhiram Gunisetty,abhi.gunisetti@gmail.com,Thu, 19 May 2022 10:30:44 +0800,queries included,'
  17 files changed, 1399 insertions(+), 8 deletions(-)
 
+'33ed8ba,Xiao,Xiaoyu@192.168.0.10,Fri, 15 May 2022 11:51:37 +0800,few additions,'
+ 12 files changed,  249 insertions(+), 19 deletions(-)
+ 
 '7eb9aab,Abhiram Gunisetty,abhi.gunisetti@gmail.com,Sat, 14 May 2022 04:02:08 +0800,first commit,'
  2605 files changed, 529827 insertions(+)
