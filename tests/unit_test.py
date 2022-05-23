@@ -5,7 +5,7 @@ from project import create_app
 from werkzeug.security import generate_password_hash, check_password_hash
 # from app import app 
 
-app = create_app(testing=True)
+app = create_app()
 app.app_context().push()
 
 class ModelTest(unittest.TestCase):
